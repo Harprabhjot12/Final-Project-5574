@@ -1,0 +1,43 @@
+<style>
+  html,
+  body,
+  #viewDiv {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  #buttonContainer {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 99;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    max-width: 160px;
+  }
+
+  .continentBtn {
+    padding: 2px 4px;
+    font-size: 9px;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .africa { background-color: #1f77b4; }
+  .antarctica { background-color: #9467bd; }
+  .asia { background-color: #2ca02c; }
+  .australia { background-color: #ff7f0e; }
+  .europe { background-color: #d62728; }
+  .northamerica { background-color: #17becf; }
+  .oceania { background-color: #8c564b; }
+  .southamerica { background-color: #e377c2; }
+</style>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Final_project_5574</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Global Earthquake Magnitude Analysis</title>
+
+  <!-- ArcGIS -->
+  <link rel="stylesheet" href="https://js.arcgis.com/4.24/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.24/"></script>
+
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    /* Button container styling */
+    #buttonContainer {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 99;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    /* Universal button style */
+    .continentBtn {
+      padding: 6px 10px;
+      font-size: 13px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Distinct colors */
+    .africa {
+      background-color: #1f77b4;
+    }
+
+    .antarctica {
+      background-color: #9467bd;
+    }
+
+    .asia {
+      background-color: #2ca02c;
+    }
+
+    .australia {
+      background-color: #ff7f0e;
+    }
+
+    .europe {
+      background-color: #d62728;
+    }
+
+    .northamerica {
+      background-color: #17becf;
+    }
+
+    .oceania {
+      background-color: #8c564b;
+    }
+
+    .southamerica {
+      background-color: #e377c2;
+    }
+  </style>
+
+  <script>
+    require(["esri/views/MapView", "esri/WebMap"], (MapView, WebMap) => {
+      const webmap = new WebMap({
+        portalItem: {
+          id: "5abbc1d74f0042c4802cab83b224de17"
+        }
+      });
+
+      const view = new MapView({
+        container: "viewDiv",
+        map: webmap
+      });
+
+      // Continent coordinates + zoom levels
+      const regions = {
+        "Africa": { center: [20, 0], zoom: 4 },
+        "Antarctica": { center: [0, -75], zoom: 3 },
+        "Asia": { center: [100, 40], zoom: 3 },
+        "Australia": { center: [135, -25], zoom: 4 },
+        "Europe": { center: [15, 50], zoom: 4 },
+        "NorthAmerica": { center: [-100, 40], zoom: 3 },
+        "Oceania": { center: [160, -5], zoom: 3 },
+        "SouthAmerica": { center: [-60, -15], zoom: 3 }
+      };
+
+      view.when(() => {
+        Object.keys(regions).forEach(key => {
+          const btn = document.getElementById("btn-" + key);
+          btn.addEventListener("click", () => {
+            view.goTo({
+              center: regions[key].center,
+              zoom: regions[key].zoom
+            });
+          });
+        });
+      });
+    });
+  </script>
+</head>
+
+<body>
+
+  <div id="viewDiv"></div>
+
+  <!-- Buttons -->
+  <div id="buttonContainer">
+    <button id="btn-Africa" class="continentBtn africa">Africa</button>
+    <button id="btn-Antarctica" class="continentBtn antarctica">Antarctica</button>
+    <button id="btn-Asia" class="continentBtn asia">Asia</button>
+    <button id="btn-Australia" class="continentBtn australia">Australia</button>
+    <button id="btn-Europe" class="continentBtn europe">Europe</button>
+    <button id="btn-NorthAmerica" class="continentBtn northamerica">North America</button>
+    <button id="btn-Oceania" class="continentBtn oceania">Oceania</button>
+    <button id="btn-SouthAmerica" class="continentBtn southamerica">South America</button>
+  </div>
+
+</body>
+
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
